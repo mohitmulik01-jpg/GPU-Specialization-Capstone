@@ -1,0 +1,24 @@
+rm -f gpu_image_capstone edge_output*.ppm results/benchmark.csv
+nvcc -O2 -std=c++17 -lineinfo src/main.cu -o gpu_image_capstone
+GPU: Tesla T4
+Input: data/sample_1024.ppm (1024x768)
+CPU pipeline: 12.7165 ms
+GPU kernel samples: 0.05264 ms 0.051776 ms 0.050944 ms 0.049536 ms 0.049504 ms 
+Validation mismatches (>1 intensity): 0, maximum absolute error: 0
+Output: results/sample_1024_edges.ppm
+CSV: results/benchmark.csv
+GPU: Tesla T4
+Input: data/sample_256.ppm (256x256)
+CPU pipeline: 0.773682 ms
+GPU kernel samples: 0.01632 ms 0.014336 ms 0.012288 ms 0.012256 ms 0.012736 ms 
+Validation mismatches (>1 intensity): 0, maximum absolute error: 0
+Output: results/sample_256_edges.ppm
+CSV: results/benchmark.csv
+GPU: Tesla T4
+Input: data/sample_512.ppm (512x512)
+CPU pipeline: 3.53398 ms
+GPU kernel samples: 0.054784 ms 0.020864 ms 0.021888 ms 0.02048 ms 0.02048 ms 
+Validation mismatches (>1 intensity): 0, maximum absolute error: 0
+Output: results/sample_512_edges.ppm
+CSV: results/benchmark.csv
+Completed. Review results/benchmark.csv and results/*_edges.ppm.
